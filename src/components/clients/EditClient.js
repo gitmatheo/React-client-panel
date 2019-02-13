@@ -5,7 +5,6 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Spinner from "../layout/Spinner";
-import classnames from "classnames";
 
 class EditClient extends Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class EditClient extends Component {
       email: this.emailInput.current.value,
       phone: this.phoneInput.current.value,
       balance:
-        this.balanceInput.current.value == ""
+        this.balanceInput.current.value === ""
           ? 0
           : this.balanceInput.current.value
     };
