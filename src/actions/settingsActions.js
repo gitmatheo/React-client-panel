@@ -5,19 +5,34 @@ import {
 } from "../actions/types";
 
 export const setDisableBalanceOnAdd = () => {
+  //Get settings from localStorage
+  const settings = JSON.parse(localStorage.geItem("settings"));
+  //Toggle
+  settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd;
+  //Set back to localStorage
+  localStorage.setItem("settings", JSON.stringify(settings));
   return {
-    type: DISABLE_BALANCE_ON_ADD
+    type: DISABLE_BALANCE_ON_ADD,
+    payload: settings.disableBalanceOnAdd
   };
 };
 
 export const setDisableBalanceOnEdit = () => {
+  const settings = JSON.parse(localStorage.geItem("settings"));
+  settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit;
+  localStorage.setItem("settings", JSON.stringify(settings));
   return {
-    type: DISABLE_BALANCE_ON_EDIT
+    type: DISABLE_BALANCE_ON_EDIT,
+    payload: settings.disableBalanceOnEdit
   };
 };
 
 export const setAllowRegistration = () => {
+  const settings = JSON.parse(localStorage.geItem("settings"));
+  settings.allowRegistration = !settings.allowRegistration;
+  localStorage.setItem("settings", JSON.stringify(settings));
   return {
-    type: ALLOW_REGISTRATION
+    type: ALLOW_REGISTRATION,
+    payload: settings.allowRegistration
   };
 };
